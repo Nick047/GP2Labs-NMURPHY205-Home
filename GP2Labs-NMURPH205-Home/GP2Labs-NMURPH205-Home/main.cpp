@@ -36,7 +36,16 @@ void render()
 	//clears the color and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
+	
+	/*
+	float triangle1_pos_x = 1.0f;
+	float triangle1_pos_y = 1.0f;
+	float triangle1_pos_z = 1.0f;
+	
+	float triangle2_pos_x = 1.0f;
+	float triangle2_pos_y = 1.0f;
+	float triangle2_pos_z = 1.0f;	
+	*/
 	//Switch to ModelView
 	glMatrixMode(GL_MODELVIEW);
 	//reset using the identity matrix
@@ -46,13 +55,28 @@ void render()
 	//begin drawing triangles
 	glBegin(GL_TRIANGLES);
 	glColor3f(1.0f, 0.0f, 0.0f); //Color of the vertices
-	glVertex3f(0.0f, 1.0f, 0.0f); //Top
+	glVertex3f(1.0f, 1.0f, 0.0f); //Top
+
+	
+	glColor3f(0.0f, 1.0f, 0.0f); //Color of the vertices
 	glVertex3f(-1.0f, -1.0f, 0.0f); //Bottom Left
+
+	glColor3f(0.0f, 0.0f, 1.0f); //Color of the vertices
 	glVertex3f(1.0f, -1.0f, 0.0f); //Bottom Right
 	glEnd();
+	//tringle 2
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f); //Color of the vertices
+	glVertex3f(0.0f, 0.50f, 0.0f); //Top
 
+	glColor3f(1.0f, 0.0f, 0.0f); //Color of the vertices
+	glVertex3f(-0.50f, -0.50f, 0.0f); //Bottom Left
 
+	glColor3f(1.0f, 0.0f, 0.0f); //Color of the vertices
+	glVertex3f(0.50f, -0.50f, 0.0f); //Bottom Right
+	glEnd();
 	//require to swap the back and front buffer
+
 	SDL_GL_SwapWindow(window);
 }
 
