@@ -28,6 +28,40 @@ void InitWindow(int width, int height, bool fullscreen)	//function takes in 2 in
 //^Hover over SDL_CreateWindow the variable should be obvious from there except the last one which is a SDL_WindowFLag (look it up) https://wiki.libsdl.org/SDL_WindowFlags
 }
 
+//Function to draw
+void render()
+{
+	//set the clear color(background)
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	//clears the color and depth buffer
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+	//Switch to ModelView
+	glMatrixMode(GL_MODELVIEW);
+	//reset using the identity matrix
+	glLoadIdentity();
+	//Translate to -5.0f on z axis
+	glTranslatef(0.0f, 0.0f, -5.0f);
+	//begin drawing triangles
+	glBegin(GL_TRIANGLES);
+	glColor3f(1.0f, 0.0f, 0.0f); //Color of the vertices
+	glVertex3f(0.0f, 1.0f, 0.0f); //Top
+	glVertex3f(-1.0f, -1.0f, 0.0f); //Bottom Left
+	glVertex3f(1.0f, -1.0f, 0.0f); //Bottom Right
+	glEnd();
+
+
+	//require to swap the back and front buffer
+	SDL_GL_SwapWindow(window);
+}
+
+//Function to update game state
+void update()
+{
+
+}
+
 //Used to cleanup once we exit
 
 void CleanUp()	//clears the meemory when exiting the game loop
@@ -127,6 +161,9 @@ int main(int argc, char* args[])	//integer trcks cmdline arguments and a pointer
 	SDL_Event event;
 	while(running)
 	{
+		update();
+		render();
+
 		while(SDL_PollEvent(&event))
 		{
 			//Get event type
