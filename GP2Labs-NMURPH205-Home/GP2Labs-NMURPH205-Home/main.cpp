@@ -1,6 +1,8 @@
 //header files
 
 #include <iostream>	//this allows information to be output which is useful for debugging
+//header for glew functionality comes before sdl2
+#include <GL\glew.h>
 //Header for SDL2 functionality
 #include <SDL.h>
 //opengl header files
@@ -44,7 +46,12 @@ void render()
 	
 	float triangle2_pos_x = 1.0f;
 	float triangle2_pos_y = 1.0f;
-	float triangle2_pos_z = 1.0f;	
+	float triangle2_pos_z = 1.0f;
+
+	float move = 1.1f;
+
+	//multiply the x y z by the float to get it to move althought multiplying by the relevant matrices would be more effective
+	//need a way to combine the vertices into a matrix which can then be moved as a whole
 	*/
 	//Switch to ModelView
 	glMatrixMode(GL_MODELVIEW);
@@ -56,7 +63,6 @@ void render()
 	glBegin(GL_TRIANGLES);
 	glColor3f(1.0f, 0.0f, 0.0f); //Color of the vertices
 	glVertex3f(1.0f, 1.0f, 0.0f); //Top
-
 	
 	glColor3f(0.0f, 1.0f, 0.0f); //Color of the vertices
 	glVertex3f(-1.0f, -1.0f, 0.0f); //Bottom Left
